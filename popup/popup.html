@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>网页性能监测器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div style="display: flex; align-items: center;">
+      <h2>性能指标</h2>
+        <div class="refresh-buttons">
+          <button id="refreshBtn" class="refresh-button" title="强制刷新（清除缓存）">
+            <svg class="refresh-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+          </button>
+          <button id="normalRefreshBtn" class="refresh-button normal" title="普通刷新">
+            <svg class="refresh-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="score-badge" id="performanceScore">-</div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="current">当前</button>
+      <button class="tab-btn" data-tab="history">历史</button>
+    </div>
+
+    <div class="tab-content" id="currentTab">
+      <div class="metrics">
+        <!-- 基础指标 -->
+        <div class="metric-group">
+          <h3>基础指标</h3>
+          <div class="metric-item">
+            <span>页面加载时间：</span>
+            <span id="loadTime">-</span>
+          </div>
+          <div class="metric-item">
+            <span>DOM 节点数量：</span>
+            <span id="domCount">-</span>
+          </div>
+          <div class="metric-item">
+            <span>资源请求数：</span>
+            <span id="resourceCount">-</span>
+          </div>
+          <div class="metric-item">
+            <span>内存使用：</span>
+            <span id="memoryUsage">-</span>
+          </div>
+        </div>
+
+        <!-- Web Vitals 指标 -->
+        <div class="metric-group">
+          <h3>Web Vitals</h3>
+          <div class="metric-item">
+            <span>FCP (首次内容绘制)：</span>
+            <span id="fcp">-</span>
+          </div>
+          <div class="metric-item">
+            <span>LCP (最大内容绘制)：</span>
+            <span id="lcp">-</span>
+          </div>
+          <div class="metric-item">
+            <span>FID (首次输入延迟)：</span>
+            <span id="fid">-</span>
+          </div>
+          <div class="metric-item">
+            <span>CLS (累积布局偏移)：</span>
+            <span id="cls">-</span>
+          </div>
+        </div>
+
+        <!-- 资源统计 -->
+        <div class="metric-group">
+          <h3>资源统计</h3>
+          <div class="metric-item">
+            <span>JS 文件数量：</span>
+            <span id="jsCount">-</span>
+          </div>
+          <div class="metric-item">
+            <span>CSS 文件数量：</span>
+            <span id="cssCount">-</span>
+          </div>
+          <div class="metric-item">
+            <span>图片数量：</span>
+            <span id="imageCount">-</span>
+          </div>
+          <div class="metric-item">
+            <span>总资源大小：</span>
+            <span id="totalSize">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="historyTab">
+      <div class="history-list" id="historyList">
+        <!-- 历史记录将通过 JS 动态添加 -->
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="exportBtn" class="action-btn">导出报告</button>
+      <button id="clearHistoryBtn" class="action-btn">清除历史</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

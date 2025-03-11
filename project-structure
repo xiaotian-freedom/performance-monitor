@@ -1,0 +1,14 @@
+performance-monitor/
+  ├── manifest.json
+  ├── icons/
+  │   ├── icon16.png
+  │   ├── icon48.png
+  │   └── icon128.png
+  ├── popup/
+  │   ├── popup.html
+  │   ├── popup.css
+  │   └── popup.js
+  ├── background/
+  │   └── background.js
+  └── content/
+      └── content.js 
